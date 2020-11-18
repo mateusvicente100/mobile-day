@@ -1,0 +1,284 @@
+object FrmCliente: TFrmCliente
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu]
+  ClientHeight = 480
+  ClientWidth = 350
+  Position = ScreenCenter
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnShow = FormShow
+  DesignerMasterStyle = 0
+  object lytContent: TLayout
+    Align = Client
+    Size.Width = 350.000000000000000000
+    Size.Height = 480.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object tclCadastro: TTabControl
+      Align = Client
+      Size.Width = 350.000000000000000000
+      Size.Height = 480.000000000000000000
+      Size.PlatformDefault = False
+      TabIndex = 0
+      TabOrder = 0
+      TabPosition = None
+      Sizes = (
+        350s
+        480s
+        350s
+        480s)
+      object tabPesquisa: TTabItem
+        CustomIcon = <
+          item
+          end>
+        IsSelected = True
+        Size.Width = 8.000000000000000000
+        Size.Height = 8.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = ''
+        TabOrder = 0
+        Text = 'tabPesquisa'
+        ExplicitSize.cx = 8.000000000000000000
+        ExplicitSize.cy = 8.000000000000000000
+        object retHeader: TRectangle
+          Align = Top
+          Fill.Color = xFF2A2F32
+          Size.Width = 350.000000000000000000
+          Size.Height = 48.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Kind = None
+          object btnAdd: TSpeedButton
+            Align = Right
+            Cursor = crHandPoint
+            Position.X = 302.000000000000000000
+            Size.Width = 48.000000000000000000
+            Size.Height = 48.000000000000000000
+            Size.PlatformDefault = False
+            OnClick = btnAddClick
+            object imgAdd: TPath
+              Align = Center
+              Data.Path = {
+                0E00000000000000000098410000504101000000000050410000504101000000
+                0000504100009841010000000000304100009841010000000000304100005041
+                010000000000A04000005041010000000000A040000030410100000000003041
+                0000304101000000000030410000A04001000000000050410000A04001000000
+                0000504100003041010000000000984100003041010000000000984100005041
+                030000000000984100005041}
+              Fill.Color = claWhite
+              HitTest = False
+              Margins.Left = 10.000000000000000000
+              Margins.Top = 10.000000000000000000
+              Margins.Right = 10.000000000000000000
+              Margins.Bottom = 10.000000000000000000
+              Size.Width = 25.000000000000000000
+              Size.Height = 25.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              WrapMode = Fit
+            end
+          end
+        end
+        object retFooter: TRectangle
+          Align = Bottom
+          Fill.Color = xFF2A2F32
+          Position.Y = 450.000000000000000000
+          Size.Width = 350.000000000000000000
+          Size.Height = 30.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Kind = None
+          object txtFooter: TText
+            Align = Client
+            Size.Width = 350.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+            Text = 'Mobile Day 2020'
+            TextSettings.Font.Family = 'Roboto'
+            TextSettings.FontColor = claWhite
+          end
+        end
+        object vsbPesquisa: TVertScrollBox
+          Align = Client
+          Size.Width = 350.000000000000000000
+          Size.Height = 402.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 2
+          Viewport.Width = 350.000000000000000000
+          Viewport.Height = 402.000000000000000000
+        end
+      end
+      object tabCadastro: TTabItem
+        CustomIcon = <
+          item
+          end>
+        IsSelected = False
+        Size.Width = 8.000000000000000000
+        Size.Height = 8.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = ''
+        TabOrder = 0
+        Text = 'tabCadastro'
+        ExplicitSize.cx = 8.000000000000000000
+        ExplicitSize.cy = 8.000000000000000000
+        object Nome: TLabel
+          StyledSettings = [Style]
+          Position.X = 25.000000000000000000
+          Position.Y = 34.000000000000000000
+          Size.Width = 120.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Family = 'Roboto'
+          TextSettings.Font.Size = 20.000000000000000000
+          TextSettings.FontColor = claDimgray
+          Text = 'Nome'
+          TabOrder = 5
+        end
+        object edtNome: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          StyleLookup = 'transparentedit'
+          TabOrder = 0
+          TextSettings.Font.Family = 'Roboto'
+          TextSettings.Font.Size = 20.000000000000000000
+          TextSettings.FontColor = xFF2A2F32
+          Position.X = 25.000000000000000000
+          Position.Y = 78.000000000000000000
+          Size.Width = 300.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          StyledSettings = [Style]
+          object lineNome: TLine
+            Align = Bottom
+            LineType = Bottom
+            Position.Y = 39.000000000000000000
+            Size.Width = 300.000000000000000000
+            Size.Height = 1.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Color = claDimgray
+          end
+        end
+        object edtSobrenome: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          StyleLookup = 'transparentedit'
+          TabOrder = 1
+          TextSettings.Font.Family = 'Roboto'
+          TextSettings.Font.Size = 20.000000000000000000
+          TextSettings.FontColor = xFF2A2F32
+          Position.X = 25.000000000000000000
+          Position.Y = 174.000000000000000000
+          Size.Width = 300.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          StyledSettings = [Style]
+          object lineSobrenome: TLine
+            Align = Bottom
+            LineType = Bottom
+            Position.Y = 39.000000000000000000
+            Size.Width = 300.000000000000000000
+            Size.Height = 1.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Color = claDimgray
+          end
+        end
+        object lblSobreNome: TLabel
+          StyledSettings = [Style]
+          Position.X = 25.000000000000000000
+          Position.Y = 130.000000000000000000
+          Size.Width = 120.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Family = 'Roboto'
+          TextSettings.Font.Size = 20.000000000000000000
+          TextSettings.FontColor = claDimgray
+          Text = 'Sobrenome'
+          TabOrder = 4
+        end
+        object edtEmail: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          StyleLookup = 'transparentedit'
+          TabOrder = 2
+          TextSettings.Font.Family = 'Roboto'
+          TextSettings.Font.Size = 20.000000000000000000
+          TextSettings.FontColor = xFF2A2F32
+          Position.X = 25.000000000000000000
+          Position.Y = 270.000000000000000000
+          Size.Width = 300.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          StyledSettings = [Style]
+          object lineEmail: TLine
+            Align = Bottom
+            LineType = Bottom
+            Position.Y = 39.000000000000000000
+            Size.Width = 300.000000000000000000
+            Size.Height = 1.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Color = claDimgray
+          end
+        end
+        object lblEmail: TLabel
+          StyledSettings = [Style]
+          Position.X = 25.000000000000000000
+          Position.Y = 226.000000000000000000
+          Size.Width = 120.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Family = 'Roboto'
+          TextSettings.Font.Size = 20.000000000000000000
+          TextSettings.FontColor = claDimgray
+          Text = 'Email'
+          TabOrder = 3
+        end
+        object retSalvar: TRectangle
+          ClipChildren = True
+          Fill.Color = xFF2A2F32
+          Position.X = 25.000000000000000000
+          Position.Y = 348.000000000000000000
+          Size.Width = 300.000000000000000000
+          Size.Height = 48.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Kind = None
+          object btnSalvar: TSpeedButton
+            Align = Client
+            ClipChildren = True
+            Cursor = crHandPoint
+            StyledSettings = []
+            Size.Width = 300.000000000000000000
+            Size.Height = 48.000000000000000000
+            Size.PlatformDefault = False
+            Text = 'Salvar'
+            TextSettings.Font.Family = 'Roboto'
+            TextSettings.Font.Size = 20.000000000000000000
+            TextSettings.FontColor = claWhite
+            OnClick = btnSalvarClick
+          end
+        end
+        object retCancelar: TRectangle
+          Fill.Color = claWhite
+          Position.X = 25.000000000000000000
+          Position.Y = 412.000000000000000000
+          Size.Width = 300.000000000000000000
+          Size.Height = 48.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Kind = None
+          object btnCancelar: TSpeedButton
+            Align = Client
+            ClipParent = True
+            Cursor = crHandPoint
+            StyledSettings = []
+            Size.Width = 300.000000000000000000
+            Size.Height = 48.000000000000000000
+            Size.PlatformDefault = False
+            Text = 'Cancelar'
+            TextSettings.Font.Family = 'Roboto'
+            TextSettings.Font.Size = 20.000000000000000000
+            TextSettings.FontColor = claDimgray
+            OnClick = btnCancelarClick
+          end
+        end
+      end
+    end
+  end
+end
