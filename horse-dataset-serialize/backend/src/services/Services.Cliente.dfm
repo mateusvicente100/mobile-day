@@ -25,6 +25,7 @@ object ServiceCliente: TServiceCliente
       FieldName = 'id'
       Origin = 'id'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object qryCadastronome: TStringField
       FieldName = 'nome'
@@ -53,6 +54,7 @@ object ServiceCliente: TServiceCliente
       FieldName = 'id'
       Origin = 'id'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object qryPesquisanome: TStringField
       FieldName = 'nome'

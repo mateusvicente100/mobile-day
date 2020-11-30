@@ -112,7 +112,8 @@
         <Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
         <Icns_MainIcns>$(BDS)\bin\delphi_PROJECTICNS.icns</Icns_MainIcns>
         <SanitizedProjectName>frontend</SanitizedProjectName>
-    <DCC_UnitSearchPath>modules\.dcp;modules\.dcu;$(DCC_UnitSearchPath);modules;modules\dataset-serialize\src\core;modules\dataset-serialize\src\helpers;modules\dataset-serialize\src\providers;modules\dataset-serialize\src\singletons;modules\dataset-serialize\src\types;modules\restrequest4delphi\src\core;modules\restrequest4delphi\src\interfaces</DCC_UnitSearchPath></PropertyGroup>
+        <DCC_UnitSearchPath>modules\.dcp;modules\.dcu;modules;modules\dataset-serialize\src\core;modules\dataset-serialize\src\helpers;modules\dataset-serialize\src\providers;modules\dataset-serialize\src\singletons;modules\dataset-serialize\src\types;modules\restrequest4delphi\src\core;modules\restrequest4delphi\src\interfaces;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+    </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Android)'!=''">
         <DCC_UsePackage>DBXSqliteDriver;tethering;FrameStandPackage_10_3;RESTBackendComponents;bindengine;CloudService;bindcompdbx;IndyIPServer;IndySystem;fmxFireDAC;soaprtl;DbxCommonDriver;xmlrtl;soapmidas;rtl;DbxClientDriver;IndyIPClient;RESTComponents;DBXInterBaseDriver;bindcompfmx;fmx;FireDACIBDriver;dbexpress;IndyCore;dsnap;FireDACCommon;soapserver;FireDACCommonDriver;inet;IndyIPCommon;FireDAC;FireDACSqliteDriver;CustomIPTransport;bindcomp;dbxcds;dsnapxml;dbrtl;IndyProtocols;$(DCC_UsePackage)</DCC_UsePackage>
         <VerInfo_Keys>package=com.embarcadero.$(MSBuildProjectName);label=$(MSBuildProjectName);versionCode=1;versionName=1.0.0;persistent=False;restoreAnyVersion=False;installLocation=auto;largeHeap=False;theme=TitleBar;hardwareAccelerated=true;apiKey=</VerInfo_Keys>
@@ -410,6 +411,7 @@
             <FormType>fmx</FormType>
             <DesignClass>TFrame</DesignClass>
         </DCCReference>
+        <DCCReference Include="src\providers\Providers.Types.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

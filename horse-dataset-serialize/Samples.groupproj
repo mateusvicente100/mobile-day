@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{4F168A8A-AAE2-4E41-83B3-C9DF99AC3BCC}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="backend\backend.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="frontend\frontend.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="backend">
+        <MSBuild Projects="backend\backend.dproj"/>
+    </Target>
+    <Target Name="backend:Clean">
+        <MSBuild Projects="backend\backend.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="backend:Make">
+        <MSBuild Projects="backend\backend.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="frontend">
+        <MSBuild Projects="frontend\frontend.dproj"/>
+    </Target>
+    <Target Name="frontend:Clean">
+        <MSBuild Projects="frontend\frontend.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="frontend:Make">
+        <MSBuild Projects="frontend\frontend.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="backend;frontend"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="backend:Clean;frontend:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="backend:Make;frontend:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

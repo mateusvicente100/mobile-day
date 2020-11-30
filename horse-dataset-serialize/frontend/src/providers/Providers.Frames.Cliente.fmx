@@ -37,6 +37,7 @@ object FrameCliente: TFrameCliente
       TabOrder = 1
     end
     object crlDelete: TCircle
+      OnTap = crlDeleteTap
       Anchors = [akTop, akRight]
       Fill.Color = xFF2A2F32
       Position.X = 274.000000000000000000
@@ -45,6 +46,7 @@ object FrameCliente: TFrameCliente
       Size.Height = 35.000000000000000000
       Size.PlatformDefault = False
       Stroke.Kind = None
+      OnClick = crlDeleteClick
       object imgDelete: TPath
         Align = Center
         Data.Path = {
@@ -77,6 +79,36 @@ object FrameCliente: TFrameCliente
       Size.Height = 1.000000000000000000
       Size.PlatformDefault = False
       Stroke.Color = claDimgray
+    end
+    object crlEdit: TCircle
+      OnTap = crlEditTap
+      Anchors = [akTop, akRight]
+      Fill.Color = xFF2A2F32
+      Position.X = 226.000000000000000000
+      Position.Y = 20.000000000000000000
+      Size.Width = 35.000000000000000000
+      Size.Height = 35.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Kind = None
+      OnClick = crlEditClick
+      object imgEdit: TPath
+        Align = Center
+        Data.Path = {
+          110000000000000014AEA541AE47E14002000000CDCCA841CDCCD44002000000
+          CDCCA8410000C0400200000014AEA541F628B44001000000C3F592415C8F5240
+          02000000000090419A99394002000000CDCC8A419A9939400200000014AE8741
+          5C8F52400100000085EB71410AD7A34001000000C3F5964185EB0D4100000000
+          0000404000008A4101000000000040400000A841010000000000D8400000A841
+          01000000E17A8E4148E11E4101000000C3F560418FC2C5400100000000004040
+          00008A41030000000000404000008A41}
+        Fill.Color = claWhite
+        HitTest = False
+        Size.Width = 16.000000000000000000
+        Size.Height = 16.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Kind = None
+        WrapMode = Fit
+      end
     end
   end
 end

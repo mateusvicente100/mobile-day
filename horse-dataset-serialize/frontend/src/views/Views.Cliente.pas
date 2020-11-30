@@ -43,6 +43,8 @@ type
     procedure Salvar;
     procedure Listar;
     procedure Incluir;
+    procedure OnDelete(const ASender: TFrame; const AId: string);
+    procedure OnUpdate(const ASender: TFrame; const AId: string);
   end;
 
 var
@@ -109,9 +111,12 @@ begin
         LFrame.Parent := vsbPesquisa;
         LFrame.Align := TAlignLayout.Top;
         LFrame.Position.X := vsbPesquisa.Content.ControlsCount * LFrame.Height;
+        LFrame.Id := FService.mtPesquisaid.AsString;
         LFrame.Name := LFrame.ClassName + FService.mtPesquisaid.AsString;
         LFrame.lblNome.Text := Format('%s %s', [FService.mtPesquisanome.AsString, FService.mtPesquisasobrenome.AsString]);
         LFrame.lblEmail.Text := FService.mtPesquisaemail.AsString;
+        LFrame.OnDelete := Self.OnDelete;
+        LFrame.OnUpdate := Self.OnUpdate;
         FService.mtPesquisa.Next;
       end;
     except
@@ -123,11 +128,38 @@ begin
   end;
 end;
 
+procedure TFrmCliente.OnDelete(const ASender: TFrame; const AId: string);
+begin
+  try
+    FService.Delete(AId);
+    ASender.DisposeOf;
+  except
+    on E:Exception do
+      ShowMessage(E.Message);
+  end;
+end;
+
+procedure TFrmCliente.OnUpdate(const ASender: TFrame; const AId: string);
+begin
+  try
+    FService.GetById(AId);
+    edtNome.Text := FService.mtCadastronome.AsString;
+    edtSobrenome.Text := FService.mtCadastrosobrenome.AsString;
+    edtEmail.Text := FService.mtCadastroemail.AsString;
+    tclCadastro.Next();
+  except
+    on E:Exception do
+      ShowMessage(E.Message);
+  end;
+end;
+
 procedure TFrmCliente.Salvar;
 begin
   try
-    FService.mtCadastro.EmptyDataSet;
-    FService.mtCadastro.Append;
+    if (FService.mtCadastroid.AsInteger > 0) then
+      FService.mtCadastro.Edit
+    else
+      FService.mtCadastro.Append;
     FService.mtCadastronome.AsString := edtNome.Text;
     FService.mtCadastrosobrenome.AsString := edtSobrenome.Text;
     FService.mtCadastroemail.AsString := edtEmail.Text;

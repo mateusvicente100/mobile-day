@@ -23,6 +23,8 @@ type
   public
     procedure Salvar;
     procedure Listar;
+    procedure Delete(const AId: string);
+    procedure GetById(const AId: string);
   end;
 
 implementation
@@ -35,6 +37,34 @@ procedure TServiceCliente.DataModuleCreate(Sender: TObject);
 begin
   mtCadastro.Open;
   mtPesquisa.Open;
+end;
+
+procedure TServiceCliente.Delete(const AId: string);
+var
+  LResponse: IResponse;
+begin
+  LResponse := TRequest.New
+    .BaseURL('http://localhost:9000')
+    .Resource('clientes')
+    .ResourceSuffix(AId)
+    .Delete;
+  if not (LResponse.StatusCode = 204) then
+    raise Exception.Create(LResponse.JSONValue.GetValue<string>('error'));
+end;
+
+procedure TServiceCliente.GetById(const AId: string);
+var
+  LResponse: IResponse;
+begin
+  mtCadastro.EmptyDataSet;
+  LResponse := TRequest.New
+    .BaseURL('http://localhost:9000')
+    .Resource('clientes')
+    .ResourceSuffix(AId)
+    .DataSetAdapter(mtCadastro)
+    .Get;
+  if not (LResponse.StatusCode = 200) then
+    raise Exception.Create(LResponse.JSONValue.GetValue<string>('error'));
 end;
 
 procedure TServiceCliente.Listar;
@@ -52,15 +82,20 @@ end;
 
 procedure TServiceCliente.Salvar;
 var
+  LRequest: IRequest;
   LResponse: IResponse;
 begin
-  LResponse := TRequest.New
+  LRequest := TRequest.New
     .BaseURL('http://localhost:9000')
     .Resource('clientes')
-    .AddBody(mtCadastro.ToJSONObject)
-    .Post;
-  if not (LResponse.StatusCode = 201) then
+    .AddBody(mtCadastro.ToJSONObject);
+  if (mtCadastroid.AsInteger > 0) then
+    LResponse := LRequest.ResourceSuffix(mtCadastroid.AsString).Put
+  else
+    LResponse := LRequest.Post;
+  if not (LResponse.StatusCode in [201, 204]) then
     raise Exception.Create(LResponse.JSONValue.GetValue<string>('error'));
+  mtCadastro.EmptyDataSet;
 end;
 
 end.

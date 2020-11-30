@@ -24,6 +24,9 @@ type
   public
     function ListAll: TFDQuery;
     function Append(const AJson: TJSONObject): Boolean;
+    function GetById(const AId: string): TFDQuery;
+    function Update(const AJson: TJSONObject): Boolean;
+    function Delete: Boolean;
   end;
 
 implementation
@@ -40,10 +43,30 @@ begin
   Result := qryCadastro.ApplyUpdates(0) = 0;
 end;
 
+function TServiceCliente.Delete: Boolean;
+begin
+  qryCadastro.Delete;
+  Result := qryCadastro.ApplyUpdates(0) = 0;
+end;
+
+function TServiceCliente.GetById(const AId: string): TFDQuery;
+begin
+  qryCadastro.SQL.Add('where id = :id');
+  qryCadastro.ParamByName('id').AsInteger := AId.ToInteger;
+  qryCadastro.Open();
+  Result := qryCadastro;
+end;
+
 function TServiceCliente.ListAll: TFDQuery;
 begin
   qryPesquisa.Open();
   Result := qryPesquisa;
+end;
+
+function TServiceCliente.Update(const AJson: TJSONObject): Boolean;
+begin
+  qryCadastro.MergeFromJSONObject(AJson, False);
+  Result := qryCadastro.ApplyUpdates(0) = 0;
 end;
 
 end.
