@@ -14,7 +14,7 @@ var
 begin
   LService := TServiceCliente.Create(nil);
   try
-    Res.Send(LService.ListAll.ToJSONArray);
+    Res.Send(LService.ListAll(Req.Query).ToJSONArray);
   finally
     LService.Free;
   end;
